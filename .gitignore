@@ -1,6 +1,7 @@
 # ignore them
 ll_env/
 .vscode/
+migrations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
