@@ -1,9 +1,14 @@
 """定义learnging_logs的URL模式"""
 
 from django.conf.urls import url
-from .views import index
+from .import views
 
 urlpatterns = [
     # 主页
-    url(r'^$', index, name='index'),
+    url(r'^$', views.index, name='index'),
+    # 显示所有的主题
+    url(r'^topics/$', views.topics, name='topics' ),
+    # 特定主题的详细页面
+    # topic_id 将作为参数传递给view函数
+    url(r'^topics/(?P<topic_id>\d+)/$', views.topic, name='topic'),
 ]
