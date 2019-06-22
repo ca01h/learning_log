@@ -10,6 +10,7 @@ def index(request):
     """学习笔记的主页"""
     return render(request, 'learning_logs/index.html')
 
+@login_required
 def topics(request):
     """显示所有的主题"""
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
@@ -70,7 +71,7 @@ def edit_entry(request, entry_id):
     """编辑既有的条目"""
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
-    if topic.ownwe != request.user:
+    if topic.owner != request.user:
         raise Http404
 
     if request.method != 'POST':
